@@ -7,7 +7,7 @@ public class EnemyAI : MonoBehaviour
 {
 
     [SerializeField] Transform target;
-    [SerializeField] float chaseRange = 5f;
+    [SerializeField] float chaseRange = 15f;
 
     NavMeshAgent navMeshAgent;
     Rigidbody rigidBody;
@@ -30,5 +30,13 @@ public class EnemyAI : MonoBehaviour
         {
             // Debug.Log("Not chasing");
         }
+    }
+
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, chaseRange);
+
     }
 }

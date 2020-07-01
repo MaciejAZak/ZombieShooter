@@ -1604,6 +1604,11 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1436972721}
+    - target: {fileID: 6136638899144494014, guid: 5f31f8fb8067bcc4896e4da82d64a7ad,
+        type: 3}
+      propertyPath: chaseRange
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6136638899144494015, guid: 5f31f8fb8067bcc4896e4da82d64a7ad,
         type: 3}
       propertyPath: m_Enabled
