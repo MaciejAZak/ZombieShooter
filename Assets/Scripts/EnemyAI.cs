@@ -7,17 +7,28 @@ public class EnemyAI : MonoBehaviour
 {
 
     [SerializeField] Transform target;
-    NavMeshAgent navMeshAgent;
+    [SerializeField] float chaseRange = 5f;
 
-    // Start is called before the first frame update
+    NavMeshAgent navMeshAgent;
+    Rigidbody rigidBody;
+    float distanceToTarget = Mathf.Infinity;
+
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        rigidBody = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        navMeshAgent.SetDestination(target.position);
+        distanceToTarget = Vector3.Distance(target.position, this.transform.position);
+        if (distanceToTarget < chaseRange)
+        {
+            navMeshAgent.SetDestination(target.position);
+        }
+        else
+        {
+            // Debug.Log("Not chasing");
+        }
     }
 }
