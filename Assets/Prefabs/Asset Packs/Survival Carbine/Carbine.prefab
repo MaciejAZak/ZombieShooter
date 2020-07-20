@@ -340,6 +340,8 @@ MonoBehaviour:
   range: 100
   damage: 20
   muzzleFlash: {fileID: 3107071214425038709}
+  hitWallEffect: {fileID: 3337905786673403182, guid: c90173b4e7339954789449712f0f5aea,
+    type: 3}
 --- !u!1 &2337074158997199752
 GameObject:
   m_ObjectHideFlags: 0
