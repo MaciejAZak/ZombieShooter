@@ -4,19 +4,11 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [SerializeField] float hitPoints = 100f;
 
-    [SerializeField] float hitPoints;
-
-    // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void loseHealth(float damage)
@@ -24,7 +16,7 @@ public class PlayerHealth : MonoBehaviour
         hitPoints -= damage;
         if (hitPoints <= 0)
         {
-            //DEAD
+            GetComponent<DeathHandler>().HandleDeath();
         }
     }
 }

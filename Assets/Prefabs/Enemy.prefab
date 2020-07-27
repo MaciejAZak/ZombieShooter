@@ -103,11 +103,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6136638899144494011}
   - component: {fileID: 1000462612420339162}
+  - component: {fileID: 6136638899144494014}
+  - component: {fileID: 6158008787047445169}
   - component: {fileID: 6136638899144494010}
   - component: {fileID: 6136638899144494009}
   - component: {fileID: 6136638899144494008}
   - component: {fileID: 6136638899144494015}
-  - component: {fileID: 6136638899144494014}
   - component: {fileID: 538878736}
   m_Layer: 0
   m_Name: Enemy
@@ -145,6 +146,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404cfd3c37454eb4e9feb7ac74576e9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitPoints: 100
+--- !u!114 &6136638899144494014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6136638899144494013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab84d929364b59a489427e211c77c3b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  chaseRange: 15
+  turnSpeed: 5
+--- !u!114 &6158008787047445169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6136638899144494013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7123f444a8f6dbb4daf0638205d2bb20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 40
 --- !u!33 &6136638899144494010
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -228,20 +258,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &6136638899144494014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6136638899144494013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab84d929364b59a489427e211c77c3b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  chaseRange: 15
 --- !u!54 &538878736
 Rigidbody:
   m_ObjectHideFlags: 0
