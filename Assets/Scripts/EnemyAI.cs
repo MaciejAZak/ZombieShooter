@@ -43,15 +43,10 @@ public class EnemyAI : MonoBehaviour
     private void EngageTarget()
     {
         FaceTarget();
-        if (distanceToTarget >= navMeshAgent.stoppingDistance && distanceToTarget >= 10)
+        if (distanceToTarget >= navMeshAgent.stoppingDistance)
         {
             ChaseTarget();
         }
-        else if (distanceToTarget >= navMeshAgent.stoppingDistance && distanceToTarget < 10)
-        {
-            ChaseTargetFaster();
-        }
-
         if (distanceToTarget <= navMeshAgent.stoppingDistance)
         {
             AttackTarget();
@@ -61,7 +56,7 @@ public class EnemyAI : MonoBehaviour
     private void AttackTarget()
     {
         GetComponentInChildren<Animator>().SetBool("Attack", true);
-        Debug.Log("Attacked!");
+        navMeshAgent.speed = 0.5f;
     }
 
     private void FaceTarget()
@@ -73,15 +68,19 @@ public class EnemyAI : MonoBehaviour
 
     private void ChaseTarget()
     {
+        if (distanceToTarget < 6)
+        {
+            GetComponentInChildren<Animator>().SetBool("fastmove", true);
+            navMeshAgent.speed = 4f;
+        }
+        else
+        {
+            GetComponentInChildren<Animator>().SetBool("fastmove", false);
+            navMeshAgent.speed = 2f;
+        }
         GetComponentInChildren<Animator>().SetBool("Attack", false);
         GetComponentInChildren<Animator>().SetTrigger("move");
-        navMeshAgent.SetDestination(target.position);
-    }
 
-    private void ChaseTargetFaster()
-    {
-        GetComponentInChildren<Animator>().SetBool("Attack", false);
-        GetComponentInChildren<Animator>().SetTrigger("fastmove");
         navMeshAgent.SetDestination(target.position);
     }
 
