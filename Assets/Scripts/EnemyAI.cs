@@ -43,18 +43,24 @@ public class EnemyAI : MonoBehaviour
     private void EngageTarget()
     {
         FaceTarget();
-        if (distanceToTarget >= navMeshAgent.stoppingDistance)
+        if (distanceToTarget >= navMeshAgent.stoppingDistance && distanceToTarget >= 10)
         {
             ChaseTarget();
         }
+        else if (distanceToTarget >= navMeshAgent.stoppingDistance && distanceToTarget < 10)
+        {
+            ChaseTargetFaster();
+        }
+
         if (distanceToTarget <= navMeshAgent.stoppingDistance)
         {
             AttackTarget();
         }
     }
 
-    private static void AttackTarget()
+    private void AttackTarget()
     {
+        GetComponentInChildren<Animator>().SetBool("Attack", true);
         Debug.Log("Attacked!");
     }
 
@@ -67,6 +73,15 @@ public class EnemyAI : MonoBehaviour
 
     private void ChaseTarget()
     {
+        GetComponentInChildren<Animator>().SetBool("Attack", false);
+        GetComponentInChildren<Animator>().SetTrigger("move");
+        navMeshAgent.SetDestination(target.position);
+    }
+
+    private void ChaseTargetFaster()
+    {
+        GetComponentInChildren<Animator>().SetBool("Attack", false);
+        GetComponentInChildren<Animator>().SetTrigger("fastmove");
         navMeshAgent.SetDestination(target.position);
     }
 

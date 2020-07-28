@@ -4798,7 +4798,7 @@ GameObject:
   - component: {fileID: 3337905786680500420}
   - component: {fileID: 3337905786679908356}
   m_Layer: 0
-  m_Name: Explosion
+  m_Name: hitWallEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4831,7 +4831,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ac1691131a8c844dafe8b6ace6a172a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionForce: 20
+  explosionForce: 0
 --- !u!114 &3337905786680500420
 MonoBehaviour:
   m_ObjectHideFlags: 0
