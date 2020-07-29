@@ -10,19 +10,24 @@ public class Weapon : MonoBehaviour
     [SerializeField] float damage = 20f;
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitWallEffect;
+    [SerializeField] GameObject ZombiePrefab;
     [SerializeField] Ammo ammoSlot;
+    [SerializeField] float TimeBetweenShots = 0.5f;
+
+    bool canShoot = true;
 
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && canShoot == true)
         {
-            Shoot();
+            StartCoroutine(Shoot());
         }
     }
 
-    private void Shoot()
+    IEnumerator Shoot()
     {
+        canShoot = false;
         if (ammoSlot.GetCurrentAmmo() > 0)
         {
             PlayMuzzleFlash();
@@ -33,7 +38,8 @@ public class Weapon : MonoBehaviour
         {
             Debug.Log("Out of Ammo!");
         }
-
+        yield return new WaitForSeconds(TimeBetweenShots);
+        canShoot = true;
     }
 
     private void PlayMuzzleFlash()
@@ -47,13 +53,15 @@ public class Weapon : MonoBehaviour
         if (Physics.Raycast(FPCamera.transform.position, FPCamera.transform.forward, out hit, range))
         {
             CreateHitImpact(hit);
-            Debug.Log("Hit: " + hit.transform.name);
+            //Debug.Log("Hit: " + hit.transform.name);
             EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
             if (target == null)
             {
                 return;
             }
             target.TakeDamage(damage);
+            Debug.Log(this.name);
+
         }
         else
         {
@@ -67,5 +75,6 @@ public class Weapon : MonoBehaviour
         Destroy(impact, 0.1f);
 
     }
+
 }
 

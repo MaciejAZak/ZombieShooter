@@ -23,7 +23,14 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
+        if (target == null)
+        {
+            Debug.Log("No Target");
+            target = GameObject.Find("Player").gameObject.transform;
+        }
         distanceToTarget = Vector3.Distance(target.position, this.transform.position);
+
+
         if (isProvoked)
         {
             EngageTarget();
@@ -33,6 +40,8 @@ public class EnemyAI : MonoBehaviour
             isProvoked = true;
             
         }
+
+
     }
 
     public void OnDamageTaken()
