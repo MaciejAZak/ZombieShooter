@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] float damage = 20f;
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitWallEffect;
+    [SerializeField] Ammo ammoSlot;
 
 
     void Update()
@@ -22,8 +23,17 @@ public class Weapon : MonoBehaviour
 
     private void Shoot()
     {
-        PlayMuzzleFlash();
-        ProcessRaycast();
+        if (ammoSlot.GetCurrentAmmo() > 0)
+        {
+            PlayMuzzleFlash();
+            ProcessRaycast();
+            ammoSlot.ReduceCurrentAmmo();
+        }
+        else if (ammoSlot.GetCurrentAmmo() <= 0)
+        {
+            Debug.Log("Out of Ammo!");
+        }
+
     }
 
     private void PlayMuzzleFlash()
