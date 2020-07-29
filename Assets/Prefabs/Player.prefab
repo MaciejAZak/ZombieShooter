@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 4670311995468135010}
   - component: {fileID: 1932500512275024098}
   - component: {fileID: 410954912933841950}
+  - component: {fileID: 864544613553417750}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -192,6 +193,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints: 100
+--- !u!114 &864544613553417750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4670311995477839744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf49f495c6c0ca640a389b7bbe0205f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4670311995477839746
 GameObject:
   m_ObjectHideFlags: 0
